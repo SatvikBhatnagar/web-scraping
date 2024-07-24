@@ -59,7 +59,7 @@ def save_to_csv(data, filename):
 
 
 def main():
-    url = 'https://www.iplt20.com/auction'
+    url = 'https://www.iplt20.com/auction/2024'
     html = fetch_page(url)
     if html:
         teams_detail = parse_page(html)
