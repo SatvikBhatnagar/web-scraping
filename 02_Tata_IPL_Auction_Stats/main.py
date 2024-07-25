@@ -51,6 +51,47 @@ def overview(html):
     return teams_detail
 
 
+def sold_players(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    tables = soup.find_all('table', id='t1')
+    headers = []
+    rows = []
+
+    for table in tables:
+        team_name = table.find_previous('div', class_='agv-team-name').text.strip()
+        headers = [th.text.strip() for th in table.find_all('th')]
+        headers.append('Team Name')  # Add the team name to the headers
+
+        for tr in table.find_all('tr')[1:]:
+            cells = tr.find_all('td')
+            if len(cells) > 0:
+                row = [cell.text.strip() for cell in cells]
+                row.append(team_name)
+                rows.append(row)
+
+    df = pd.DataFrame(rows, columns=headers)
+    return df
+
+
+def unsold_players(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    tables = soup.find_all('table', id='t2')
+    headers = []
+    rows = []
+
+    for table in tables:
+        headers = [th.text.strip() for th in table.find_all('th')]
+
+        for tr in table.find_all('tr')[1:]:
+            cells = tr.find_all('td')
+            if len(cells) > 0:
+                row = [cell.text.strip() for cell in cells]
+                rows.append(row)
+
+    df = pd.DataFrame(rows, columns=headers)
+    return df
+
+
 # Function to save data to CSV
 def save_to_csv(data, filename):
     df = pd.DataFrame(data)
@@ -63,7 +104,11 @@ def main():
     html = fetch_page(url)
     if html:
         teams_detail = overview(html)
+        sold = sold_players(html)
+        unsold = unsold_players(html)
         save_to_csv(teams_detail, 'overview_of_teams.csv')
+        save_to_csv(sold, 'sold_players.csv')
+        save_to_csv(unsold, 'unsold_players.csv')
 
 
 if __name__ == "__main__":
