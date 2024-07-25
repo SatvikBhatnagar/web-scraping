@@ -18,7 +18,7 @@ def fetch_page(url):
 
 
 # Function to parse the page content
-def parse_page(html):
+def overview(html):
     soup = BeautifulSoup(html, 'html.parser')
     table = soup.find('div', class_='auction-grid-view mt-3')
     if not table:
@@ -59,11 +59,11 @@ def save_to_csv(data, filename):
 
 
 def main():
-    url = 'https://www.iplt20.com/auction'
+    url = 'https://www.iplt20.com/auction/2024'
     html = fetch_page(url)
     if html:
-        teams_detail = parse_page(html)
-        save_to_csv(teams_detail, 'teams_detail.csv')
+        teams_detail = overview(html)
+        save_to_csv(teams_detail, 'overview_of_teams.csv')
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 # 02_Tata_IPL_Auction_Stats
 
-This project scrapes IPL auction statistics from the [official IPL auction page](https://www.iplt20.com/auction) and extracts details about each team, including funds remaining, overseas players, and total players. The data is saved into a CSV file.
+This project scrapes IPL auction statistics from the [official IPL auction page](https://www.iplt20.com/auction/2024) and extracts details about each team, including funds remaining, overseas players, and total players. The data is saved into a CSV file.
 
 ## Project Structure
 
