@@ -34,13 +34,12 @@ This script performs the following tasks:
 1. Clone the repository:
     ```bash
     git clone https://github.com/SatvikBhatnagar/web-scraping/tree/main/02_Tata_IPL_Auction_Stats
-    cd your-repo/02_Tata_IPL_Auction_Stats
     ```
 
 2. Create a virtual environment (optional but recommended):
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    python -m venv env
+    source env/bin/activate  # On Windows use `env\Scripts\activate`
     ```
 
 3. Install the required packages:
@@ -52,6 +51,7 @@ This script performs the following tasks:
 
 1. Run the scraper script:
     ```bash
+    cd web-scraping/02_Tata_IPL_Auction_Stats
     python ipl_auction_scraper.py
     ```
 
