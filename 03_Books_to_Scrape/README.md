@@ -40,7 +40,7 @@ This script performs the following tasks:
 
 3. Install the required packages:
     ```bash
-        pip install -r requirements.txt
+    pip install -r requirements.txt
     ```
 
 ## Usage
